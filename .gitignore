@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+'''
+Gitignores adicionados conforme na necessidade do desenvolvimento.
+'''
+
+db.sqlite3
