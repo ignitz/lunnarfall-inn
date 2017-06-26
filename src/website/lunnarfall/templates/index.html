@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{#{% block albums_active %}active{% endblock %}#}
+
+{% block body %}
+    <ul>
+    {% for cliente in all_people %}
+        <p><a href="{% url 'pessoa:detail' cliente.pk %}">{{ cliente }}</a></p>
+{#        <p>{{ cliente }}</p>#}
+    {% endfor %}
+    </ul>
+
+{% endblock %}
