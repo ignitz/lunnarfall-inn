@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{#{% block albums_active %}active{% endblock %}#}
+
+{% block body %}
+    <ul>
+    <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Funcionarios</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Data cadastro</th>
+                <th>Despesa Total</th>
+                <th>Cargo</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cliente in all_people %}
+                <tr>
+                    <td><a href="{% url 'pessoa:detail' cliente.pk %}">{{ cliente.nome }}</a></td>
+                    <td>{{ cliente.cpf }}</td>
+                    <td>{{ cliente.endereco }}</td>
+                    <td>{{ cliente.data_admissao }}</td>
+                    <td>{{ cliente.salario }}</td>
+                    <td>{{ cliente.cargo }}</td>
+                    {#              <td><i class="fa fa-check"></i></td>#}
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- /.box-body -->
+      </div>
+
+    </ul>
+
+
+{% endblock %}

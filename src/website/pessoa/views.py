@@ -9,7 +9,7 @@ from .models import Cliente, Funcionario
 from itertools import chain
 
 class PessoaIndexView(generic.ListView):
-    template_name = 'index.html'
+    template_name = 'pessoa/index.html'
     context_object_name = 'all_people'
 
     def get_queryset(self):
@@ -17,6 +17,7 @@ class PessoaIndexView(generic.ListView):
         return response
 
 class ClienteIndexView(PessoaIndexView):
+    template_name = 'pessoa/cliente_list.html'
     def get_queryset(self):
         response = Cliente.objects.all()
         return response
@@ -26,6 +27,7 @@ class ClienteDetailView(generic.DetailView):
     template_name = 'detail.html'
 
 class FuncionarioIndexView(PessoaIndexView):
+    template_name = 'pessoa/funcionario_list.html'
     def get_queryset(self):
         response = Funcionario.objects.all()
         return response
@@ -33,3 +35,4 @@ class FuncionarioIndexView(PessoaIndexView):
 class FuncionarioDetailView(generic.DetailView):
     model = Funcionario
     template_name = 'detail.html'
+

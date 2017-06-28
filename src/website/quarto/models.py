@@ -30,3 +30,7 @@ class Reserva(models.Model):
     # TODO: mais um atributo que pode ser gerado
     valor_reserva = models.DecimalField(decimal_places=2, max_digits=10)
 
+    def __str__(self):
+        response = str(self.cliente)
+        return response
+

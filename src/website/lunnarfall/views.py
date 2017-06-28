@@ -1,14 +1,15 @@
+from django.shortcuts import render
 from django.views import generic
-from pessoa.models import Cliente
+from pessoa.models import Cliente, Funcionario
 
-class IndexView(generic.ListView):
+class IndexView(generic.TemplateView):
     template_name = 'index.html'
-    # Por padrao eh object_list, mas da pra mudar os nomes aqui
-    context_object_name = 'all_clientes'
 
-    def get_queryset(self):
-        return Cliente.objects.all()
-
-class DetailView(generic.DetailView):
-    model = Cliente
-    template_name = 'detail.html'
+def index_view(request):
+    many_clientes = Cliente.objects.count()
+    many_funcionarios = Funcionario.objects.count()
+    context = {
+        'many_clientes': many_clientes,
+        'many_funcionarios': many_funcionarios,
+    }
+    return render(request, 'index.html', context)

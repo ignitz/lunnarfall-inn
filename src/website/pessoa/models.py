@@ -10,7 +10,7 @@ class Pessoa(models.Model):
         abstract = True
 
     def __str__(self):
-        return 'Nome: ' + self.nome + ' CPF:' + self.cpf
+        return 'Nome: ' + self.nome + ' CPF:' + self.cpf + '\n'
 
 
 class Cliente(Pessoa):
@@ -18,7 +18,8 @@ class Cliente(Pessoa):
     despesa_total = models.DecimalField(decimal_places=2, max_digits=10, default=0)
 
     def __str__(self):
-        return 'Nome: ' + self.nome + ' CPF: ' + self.cpf + ' Despesa: ' + str(self.despesa_total)
+        response = 'Nome: ' + self.nome + ' CPF: ' + self.cpf + ' Despesa: ' + str(self.despesa_total) + '\n'
+        return response
 
 
 class Funcionario(Pessoa):
