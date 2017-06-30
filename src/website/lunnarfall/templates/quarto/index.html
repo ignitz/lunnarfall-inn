@@ -10,12 +10,14 @@
                     <a href="{% url 'quarto:quarto_detail' quarto.pk %}">
                     {% if quarto.estado == 'Disponível' %}
                     <div class="info-box bg-green">
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-plus"></i></span>
                     {% elif quarto.estado == 'Ocupado' %}
                     <div class="info-box bg-red">
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-user"></i></span>
                     {% elif quarto.estado == 'Em faxina' %}
                     <div class="info-box bg-yellow">
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-alert"></i></span>
                     {% endif %}
-                        <span class="info-box-icon"><i class="glyphicon glyphicon-plus"></i></span>
                         <div class="info-box-content">
                             <span class="info-box-text">Quarto {{ quarto.numero }}</span>
                             <span class="info-box-number">{{ quarto.estado }}</span>
