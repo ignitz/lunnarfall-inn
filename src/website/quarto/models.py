@@ -18,9 +18,20 @@ class Categoria(models.Model):
         return response
 
 class Quarto(models.Model):
+    ESTADO = (
+        ('Disponível', 'Disponível'),
+        ('Ocupado', 'Ocupado'),
+        ('Em faxina', 'Em faxina'),
+    )
     numero = models.IntegerField()
     descricao_quarto = models.TextField()
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    estado = models.CharField(max_length=20, choices=ESTADO)
+
+    def __str__(self):
+        response = str(self.numero) + ', ' + str(self.descricao_quarto) \
+                   + ', ' + str(self.categoria) + ', ' + str(self.estado)
+        return response
 
 class Reserva(models.Model):
     cliente = models.ForeignKey(Cliente, blank=True, null=True, on_delete=models.SET_NULL)

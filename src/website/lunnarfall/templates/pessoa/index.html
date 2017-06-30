@@ -18,22 +18,14 @@
             </tr>
             </thead>
             <tbody>
-            {% for cliente in all_people %}
+            {% for cliente in data.all_people %}
                 <tr>
                   <td><a href="{% url 'pessoa:detail' cliente.pk %}">{{ cliente.nome }}</a></td>
                   <td>{{ cliente.cpf }}</td>
                   <td>{{ cliente.endereco }}</td>
-                    {#              <td><i class="fa fa-check"></i></td>#}
                 </tr>
             {% endfor %}
             </tbody>
-            <tfoot>
-            <tr>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Endereço</th>
-            </tr>
-            </tfoot>
           </table>
         </div>
         <!-- /.box-body -->

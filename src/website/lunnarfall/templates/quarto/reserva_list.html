@@ -1,5 +1,4 @@
 {% extends 'base/base.html' %}
-{#{% block albums_active %}active{% endblock %}#}
 
 {% block body %}
     <!-- Main content -->
@@ -8,7 +7,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Lista de clientes</h3>
+                        <h3 class="box-title">Lista de Quartos</h3>
 
                         <div class="box-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
@@ -26,20 +25,13 @@
                         <table class="table table-hover">
                             <tbody>
                             <tr>
-                                <th>Nome</th>
-                                <th>CPF</th>
-                                <th>Endereço</th>
-                                <th>Data cadastro</th>
-                                <th>Despesa Total</th>
+                                <th>Numero</th>
+                                <th>Descricao</th>
+                                <th>Categoria</th>
                             </tr>
-                            {% for cliente in data.all_people %}
+                            {% for reserva in data.reservas %}
                                 <tr>
-                                    <td><a href="{% url 'pessoa:detail' cliente.pk %}">{{ cliente.nome }}</a></td>
-                                    <td>{{ cliente.cpf }}</td>
-                                    <td>{{ cliente.endereco }}</td>
-                                    <td>{{ cliente.data_cadastro }}</td>
-                                    <td>{{ cliente.despesa_total }}</td>
-                                    {#              <td><i class="fa fa-check"></i></td>#}
+{#                                    TODO: obviamente mexer aqui#}
                                 </tr>
                             {% endfor %}
 
@@ -52,7 +44,5 @@
             </div>
         </div>
     </section>
-
-    ADICIONAR BOTAO ADD aqui
 
 {% endblock %}

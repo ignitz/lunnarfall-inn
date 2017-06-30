@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^pessoa/', include('pessoa.urls')),
+    url(r'^quarto/', include('quarto.urls')),
 ]
 

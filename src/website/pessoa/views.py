@@ -10,16 +10,25 @@ from itertools import chain
 
 class PessoaIndexView(generic.ListView):
     template_name = 'pessoa/index.html'
-    context_object_name = 'all_people'
+    context_object_name = 'data'
 
     def get_queryset(self):
-        response = list(chain(Cliente.objects.all(), Funcionario.objects.all()))
+        all = list(chain(Cliente.objects.all(), Funcionario.objects.all()))
+        response = {
+            'name_header': 'Pessoa',
+            'all_people': all,
+        }
         return response
 
 class ClienteIndexView(PessoaIndexView):
     template_name = 'pessoa/cliente_list.html'
+
     def get_queryset(self):
-        response = Cliente.objects.all()
+        all = Cliente.objects.all()
+        response = {
+            'name_header': 'Cliente',
+            'all_people': all,
+        }
         return response
 
 class ClienteDetailView(generic.DetailView):
@@ -28,8 +37,13 @@ class ClienteDetailView(generic.DetailView):
 
 class FuncionarioIndexView(PessoaIndexView):
     template_name = 'pessoa/funcionario_list.html'
+
     def get_queryset(self):
-        response = Funcionario.objects.all()
+        all = Funcionario.objects.all()
+        response = {
+            'name_header': 'Funcionario',
+            'all_people': all,
+        }
         return response
 
 class FuncionarioDetailView(generic.DetailView):

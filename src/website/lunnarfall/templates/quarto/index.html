@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            {% for quarto in data.quartos %}
+
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <a href="{% url 'quarto:quarto_detail' quarto.pk %}">
+                    {% if quarto.estado == 'Disponível' %}
+                    <div class="info-box bg-green">
+                    {% elif quarto.estado == 'Ocupado' %}
+                    <div class="info-box bg-red">
+                    {% elif quarto.estado == 'Em faxina' %}
+                    <div class="info-box bg-yellow">
+                    {% endif %}
+                        <span class="info-box-icon"><i class="glyphicon glyphicon-plus"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Quarto {{ quarto.numero }}</span>
+                            <span class="info-box-number">{{ quarto.estado }}</span>
+                        </div>
+                <!-- /.info-box-content -->
+                    </div></a>
+                <!-- /.info-box -->
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+
+{% endblock %}

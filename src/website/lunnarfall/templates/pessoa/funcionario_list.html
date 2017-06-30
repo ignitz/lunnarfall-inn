@@ -2,43 +2,54 @@
 {#{% block albums_active %}active{% endblock %}#}
 
 {% block body %}
-    <ul>
-    <div class="box">
-        <div class="box-header">
-          <h3 class="box-title">Funcionarios</h3>
+    <!-- Main content -->
+    <section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Lista de funcionarios</h3>
+
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tbody>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Endereço</th>
+                            <th>Data cadastro</th>
+                            <th>Despesa Total</th>
+                            <th>Cargo</th>
+                        </tr>
+                        {% for funcionario in data.all_people %}
+                            <tr>
+                                <td><a href="{% url 'pessoa:detail' funcionario.pk %}">{{ funcionario.nome }}</a></td>
+                                <td>{{ funcionario.cpf }}</td>
+                                <td>{{ funcionario.endereco }}</td>
+                                <td>{{ funcionario.data_admissao }}</td>
+                                <td>{{ funcionario.salario }}</td>
+                                <td>{{ funcionario.cargo }}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
         </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          <table id="example1" class="table table-bordered table-striped">
-            <thead>
-            <tr>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Endereço</th>
-                <th>Data cadastro</th>
-                <th>Despesa Total</th>
-                <th>Cargo</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for cliente in all_people %}
-                <tr>
-                    <td><a href="{% url 'pessoa:detail' cliente.pk %}">{{ cliente.nome }}</a></td>
-                    <td>{{ cliente.cpf }}</td>
-                    <td>{{ cliente.endereco }}</td>
-                    <td>{{ cliente.data_admissao }}</td>
-                    <td>{{ cliente.salario }}</td>
-                    <td>{{ cliente.cargo }}</td>
-                    {#              <td><i class="fa fa-check"></i></td>#}
-                </tr>
-            {% endfor %}
-            </tbody>
-          </table>
-        </div>
-        <!-- /.box-body -->
-      </div>
-
-    </ul>
-
-
+    </div>
+    </section>
 {% endblock %}
